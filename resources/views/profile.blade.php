@@ -11,17 +11,17 @@
     <div class="bg-white rounded-lg shadow-lg p-6 max-w-md text-center w-full">
 
         <div class="w-32 h-32 mx-auto mb-4 relative">
-            <img id="mitsurikanroji" class="rounded-full border border-gray-300 object-cover w-full h-full" src="{{ asset('images/mitsurikanroji.jpg') }}">
+            <img id="mitsurikanroji" class="rounded-full border border-gray-300 object-cover w-full h-full" src="{{ asset('assets/images/mitsurikanroji.jpg') }}">
         </div>
         <div class="space-y-2">
             <div class="bg-pink-200 py-2 px-4 rounded-md text-black font-semibold">
-                Mitsuri Kanroji
+                {{ $nama }}
             </div>
             <div class="bg-pink-200 py-2 px-4 rounded-md text-black font-semibold">
-                Kelas A
+                {{ $npm }}
             </div>
             <div class="bg-pink-200 py-2 px-4 rounded-md text-black font-semibold">
-                2217051152
+                {{ $kelas }}
             </div>
         </div>
     </div>

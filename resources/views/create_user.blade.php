@@ -19,18 +19,32 @@
             <div>
                 <label for="nama" class="block text-left text-gray-700 font-medium">Nama</label>
                 <input type="text" id="nama" name="nama" placeholder="Masukkan nama" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                @foreach($errors->get('nama') as $msg)
+                <p class="text-red-500 text-xs mt-1 text-left">{{$msg}}</p>
+                @endforeach
             </div>
 
             <!-- NPM -->
             <div>
                 <label for="npm" class="block text-left text-gray-700 font-medium">NPM</label>
                 <input type="text" id="npm" name="npm" placeholder="Masukkan NPM" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                @foreach($errors->get('npm') as $msg)
+                    <p class="text-red-500 text-xs mt-1 text-left"">{{$msg}}</p>
+                @endforeach
             </div>
 
             <!-- Kelas -->
             <div>
                 <label for="kelas" class="block text-left text-gray-700 font-medium">Kelas</label>
-                <input type="text" id="kelas" name="kelas" placeholder="Masukkan kelas" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <select id="kelas" name="kelas_id" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="">Pilih Kelas</option>
+                    @foreach($kelas as $kelasitem)
+                        <option value="{{ $kelasitem->id }}">{{ $kelasitem->nama_kelas }}</option>
+                    @endforeach
+                </select>
+                @foreach($errors->get('kelas_id') as $msg)
+                    <p class="text-red-500 text-xs mt-1 text-left">{{$msg}}</p>
+                @endforeach
             </div>
 
             <!-- Submit button -->

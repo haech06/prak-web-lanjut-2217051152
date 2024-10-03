@@ -21,7 +21,7 @@
                 {{ $npm }}
             </div>
             <div class="bg-pink-200 py-2 px-4 rounded-md text-black font-semibold">
-                {{ $kelas }}
+                {{ $nama_kelas }}
             </div>
         </div>
     </div>

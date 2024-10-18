@@ -5,7 +5,7 @@
     <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-5xl">
         <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">Daftar Pengguna</h1>
         
-       
+        <!-- Link untuk menambah pengguna baru -->
         <div class="flex justify-end mb-4">
             <a href="{{ route('users.create') }}" class="btn btn-primary bg-gradient-to-r from-purple-500 to-pink-400 text-white hover:bg-gradient-to-l from-purple-600 to-pink-500 px-4 py-2 rounded-lg shadow-md transition duration-200">
                 Tambah Pengguna Baru
@@ -36,9 +36,13 @@
                             <img src="{{ $user->foto ?? asset('path/to/default-foto.jpg') }}" alt="Foto {{ $user->nama }}" class="rounded-full w-16 h-16 object-cover">
                         </td>
                         <td class="px-6 py-4 flex justify-center space-x-2">
-                            <a href="{{ route('users.show', $user->id) }}" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Detail</a>
-                            <a href="#" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Edit</a>
-                            <a href="#" class="text-white bg-red-500 hover:bg-red-400 px-4 py-2 rounded transition duration-200 shadow">Hapus</a>
+                        <a href="{{ route('users.show', $user->id) }}" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Detail</a>
+                        <a href="{{ route('users.edit', $user->id) }}" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Edit</a>
+                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 text-white hover:bg-red-400 px-4 py-2 rounded transition duration-200">Hapus</button>
+                        </form>
                         </td>
                     </tr>
                     @endforeach

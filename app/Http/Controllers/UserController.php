@@ -80,6 +80,7 @@ class UserController extends Controller
             $filename = time() . '_' . $foto->getClientOriginalName();
             $foto_name = $foto->hashName(); // Mendapatkan nama file yang di-hash
             $fotoPath = $foto->move('upload/img', $foto_name); // Memindahkan foto ke folder upload/img
+            $foto->storeAs('uploads', $filename);
         }
 
         // Menyimpan data pengguna
@@ -90,7 +91,7 @@ class UserController extends Controller
             'foto' => $fotoPath, // Menyimpan path foto, jika ada
         ]);
 
-        return redirect()->to('/users')->with('success', 'User created successfully!');
+        return redirect()->to('/')->with('success', 'User created successfully!');
     }
 
     public function edit($id){

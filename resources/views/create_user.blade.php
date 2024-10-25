@@ -13,7 +13,7 @@
 
         <!-- Form start -->
         <form action="{{ route('user.store') }}" method="POST" class="space-y-4" enctype="multipart/form-data">
-            @csrf <!-- Token CSRF untuk keamanan -->
+            @csrf 
 
             <!-- Nama -->
             <div>
@@ -33,7 +33,6 @@
                 @endforeach
             </div>
 
-            <!-- Kelas -->
             <div>
                 <label for="kelas" class="block text-left text-gray-700 font-medium">Kelas</label>
                 <select id="kelas" name="kelas_id" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
@@ -47,7 +46,19 @@
                 @endforeach
             </div>
 
-            <!-- Input Foto -->
+            <div>
+                <label for="jurusan" class="block text-left text-gray-700 font-medium">Jurusan</label>
+                <select id="jurusan" name="jurusan_id" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="">Pilih Jurusan</option>
+                    @foreach($jurusan as $jurusanitem)
+                        <option value="{{ $jurusanitem->id }}">{{ $jurusanitem->nama_jurusan }} - {{ $jurusanitem->fakultas->nama_fakultas }}</option>
+                    @endforeach
+                </select>
+                @foreach($errors->get('jurusan_id') as $msg)
+                    <p class="text-red-500 text-xs mt-1 text-left">{{$msg}}</p>
+                @endforeach
+            </div>
+
             <div>
                 <label for="foto" class="block text-left text-gray-700 font-medium">Foto</label>
                 <input type="file" id="foto" name="foto" accept="image/*" class="w-full mt-1 px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
@@ -56,14 +67,12 @@
                 @endforeach
             </div>
 
-            <!-- Submit button -->
             <div>
                 <button type="submit" class="w-full py-2 px-4 bg-purple-500 text-white font-semibold rounded-md shadow hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
                     Submit
                 </button>
             </div>
         </form>
-        <!-- Form end -->
     </div>
 
 </body>

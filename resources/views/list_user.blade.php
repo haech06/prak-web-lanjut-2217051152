@@ -20,6 +20,7 @@
                         <th class="px-6 py-4 text-sm font-semibold text-center">Nama</th>
                         <th class="px-6 py-4 text-sm font-semibold text-center">NPM</th>
                         <th class="px-6 py-4 text-sm font-semibold text-center">Kelas</th>
+                        <th class="px-6 py-4 text-sm font-semibold text-center">Fakultas</th> <!-- Tambahkan kolom Fakultas -->
                         <th class="px-6 py-4 text-sm font-semibold text-center">Foto</th>
                         <th class="px-6 py-4 text-sm font-semibold text-center">Aksi</th>
                     </tr>
@@ -31,18 +32,19 @@
                         <td class="px-6 py-4 text-sm text-gray-700 text-center">{{ $user->nama }}</td>
                         <td class="px-6 py-4 text-sm text-gray-700 text-center">{{ $user->npm }}</td>
                         <td class="px-6 py-4 text-sm text-gray-700 text-center">{{ $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan' }}</td>
+                        <td class="px-6 py-4 text-sm text-gray-700 text-center">{{ $user->fakultas->nama_fakultas ?? 'Fakultas tidak ditemukan' }}</td> 
                         <td class="px-6 py-4 text-sm text-gray-700 text-center">
                             <!-- Menampilkan foto pengguna atau foto default jika bernilai null -->
                             <img src="{{ $user->foto ?? asset('path/to/default-foto.jpg') }}" alt="Foto {{ $user->nama }}" class="rounded-full w-16 h-16 object-cover">
                         </td>
                         <td class="px-6 py-4 flex justify-center space-x-2">
-                        <a href="{{ route('users.show', $user->id) }}" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Detail</a>
-                        <a href="{{ route('users.edit', $user->id) }}" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Edit</a>
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 text-white hover:bg-red-400 px-4 py-2 rounded transition duration-200">Hapus</button>
-                        </form>
+                            <a href="{{ route('users.show', $user->id) }}" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Detail</a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="bg-blue-600 text-white hover:bg-blue-400 px-4 py-2 rounded transition duration-200">Edit</a>
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white hover:bg-red-400 px-4 py-2 rounded transition duration-200">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

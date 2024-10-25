@@ -23,8 +23,16 @@ class UserModel extends Model
         return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 
-    // 
+    public function fakultas()
+    {
+        return $this->belongsTo(Fakultas::class, 'fakultas_id'); // Ensure 'fakultas_id' is the foreign key in 'users' table
+    }
     
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'jurusan_id');
+    }
+
     public function getUser($id = null)
 {
     if ($id != null) {
